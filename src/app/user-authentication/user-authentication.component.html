@@ -1,0 +1,44 @@
+<div style="margin-right:200px;width: 80%;">
+ 
+    <div class="modal-content" style="padding: 20px; border-radius: 5px;">
+        <div class="modal-header" style="border-bottom: 0;">
+           <h3 class="modal-title" style="color:white" ><strong>Sign in</strong> </h3>
+           <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+        </div>
+        <br/>
+        <div class="modal-body">
+<form [formGroup] = "LoginForm">
+  
+    <label style="color: white;">User Name : </label> 
+    <input id="username"  type="text" class="form-control" formControlName="username">
+        <div
+        *ngIf="LoginForm.controls['username'].invalid && (LoginForm.controls['username'].dirty || LoginForm.controls['username'].touched)"
+        class="alert alert-danger">
+        <div  style="color: black;" *ngIf="LoginForm.controls['username'].errors?.['required']">Name is required.</div>
+    </div>
+    <br/>
+    <label style="color: white;">Password: </label>
+    <!-- <p-calendar formControlName="date" [showIcon]="true"></p-calendar> -->
+    <input  type="password" class="form-control" formControlName="password">
+    <div
+        *ngIf="LoginForm.controls['password'].invalid && (LoginForm.controls['password'].dirty || LoginForm.controls['password'].touched)"
+        class="alert alert-danger">
+        <div style="color: black;" *ngIf="password.errors?.['required']">password is required.</div>
+    </div>
+    <br>
+      <p (click)="routeTologin()" style="color: white; cursor: pointer; text-align: center; cursor: pointer;">New User? <span style="text-decoration: underline
+      ;">Create an Account</span></p>
+      <br>
+      <div style="display: flex; flex-direction: column; justify-content: center;">
+        <button style="margin-bottom: 10px; " type="button" class="btn btn-light" (click)="onLogin($event)"   [disabled] = "!LoginForm.valid">Login</button>
+        <!-- <button type="reset" class="btn btn-danger" (click)="LoginForm.reset()">Clear</button> -->
+      </div>
+      
+</form>
+<div>
+</div>
+</div>
+</div>
+</div>
+<p-toast position="top-right" [style]="{marginTop: '60px'}" key="success"></p-toast>
+<!-- <p-toast life="100000" position="top-right" [style]="{marginTop: '60px'}" key="errors"></p-toast> -->
